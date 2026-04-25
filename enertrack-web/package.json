@@ -6,23 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "db:migrate": "wrangler d1 migrations apply enertrack-db",
+    "db:migrate:local": "wrangler d1 migrations apply enertrack-db --local"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "jose": "^5.6.3",
-    "next": "^16.2.4",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^15.3.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.19.3",
+    "@cloudflare/workers-types": "^4.20260425.1",
+    "@opennextjs/cloudflare": "^1.0.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/web-bluetooth": "^0.0.21",
     "typescript": "^5",
-    "wrangler": "^4.84.1"
+    "wrangler": "^4.0.0"
   }
 }

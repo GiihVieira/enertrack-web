@@ -1,3 +1,5 @@
+/// <reference types="@types/web-bluetooth" />
+
 // UUIDs devem coincidir com config.h do firmware
 const SERVICE_UUID      = '12345678-1234-1234-1234-123456789abc'
 const CHAR_SSID_UUID    = '12345678-1234-1234-1234-123456789ab1'
@@ -23,8 +25,8 @@ export function isBleSupported(): boolean {
 }
 
 // Converte string em Uint8Array para escrita BLE
-function strToBytes(str: string): Uint8Array {
-  return new TextEncoder().encode(str)
+function strToBytes(str: string): ArrayBuffer {
+  return new TextEncoder().encode(str).buffer as ArrayBuffer
 }
 
 export async function scanAndConnect(): Promise<EnerTrackBle> {

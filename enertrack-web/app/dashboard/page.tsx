@@ -34,7 +34,7 @@ export default function DashboardPage() {
   // Carrega devices do usuário
   useEffect(() => {
     fetch('/api/devices')
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(r => r.ok ? r.json() as Promise<{ devices: Device[] }> : Promise.reject(r.status))
       .then(data => {
         setDevices(data.devices ?? [])
         if (data.devices?.length > 0) setActiveDevice(data.devices[0])
@@ -47,7 +47,7 @@ export default function DashboardPage() {
   const fetchReadings = useCallback(async (deviceId: string) => {
     const res = await fetch(`/api/readings?device_id=${deviceId}&limit=60`)
     if (!res.ok) return
-    const data = await res.json()
+    const data = await res.json() as { readings: Reading[] }
     const list: Reading[] = data.readings ?? []
     setReadings(list)
     if (list.length > 0) setLiveReading(list[list.length - 1])

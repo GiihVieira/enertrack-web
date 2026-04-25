@@ -1,24 +1,27 @@
 name = "enertrack-web"
-compatibility_date = "2024-09-23"
+compatibility_date = "2025-04-01"
 compatibility_flags = ["nodejs_compat"]
 
-pages_build_output_dir = ".next"
+# OpenNext gera o worker aqui
+main = ".open-next/worker.js"
+
+# Assets estáticos do Next.js
+assets = { directory = ".open-next/assets", binding = "ASSETS" }
 
 # ── D1 Database ────────────────────────────────────────────────────────────────
 [[d1_databases]]
-binding = "DB"
+binding       = "DB"
 database_name = "enertrack-db"
 database_id   = "f597dd59-b602-4188-acf2-37b822eb5048"
-# Para criar: wrangler d1 create enertrack-db
 
 # ── KV Namespace (sessões JWT) ─────────────────────────────────────────────────
 [[kv_namespaces]]
 binding    = "SESSIONS"
 id         = "fdc84081c06842a18f8bd4995de3a598"
-preview_id = "SUBSTITUA_PELO_PREVIEW_ID"
-# Para criar: wrangler kv namespace create SESSIONS
+preview_id = "fdc84081c06842a18f8bd4995de3a598"
+# preview_id: substitua pelo ID real se tiver um namespace separado para preview
+# wrangler kv namespace create SESSIONS --preview
 
-# ── Variáveis de ambiente (Secrets) ───────────────────────────────────────────
-# Configure via: wrangler secret put JWT_SECRET
-# [vars]
-# JWT_SECRET = "180f1867f5e3bc1fdcdd1be79907e2a898af5db3e1b19de2b6f73cfee0a857e059c8abdef25b1718f0e473b9711c033271546871e404f429af38b7a95cdbed23"
+# ── Secrets ───────────────────────────────────────────────────────────────────
+# NUNCA coloque o valor aqui. Configure via:
+#   wrangler secret put JWT_SECRET

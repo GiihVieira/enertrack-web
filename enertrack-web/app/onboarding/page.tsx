@@ -89,7 +89,7 @@ export default function OnboardingPage() {
           name: device.deviceName,
         }),
       })
-      const data = await res.json()
+      const data = await res.json() as { device?: { id: string } }
       if (res.ok) {
         setDeviceId(data.device?.id ?? '')
         device.disconnect()
