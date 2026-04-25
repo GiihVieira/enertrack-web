@@ -19,3 +19,18 @@ preview_id = "fdc84081c06842a18f8bd4995de3a598"
 
 # ── Secrets ───────────────────────────────────────────────────────────────────
 # wrangler secret put JWT_SECRET
+
+[observability]
+enabled = false
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[observability.traces]
+enabled = false
+persist = true
+head_sampling_rate = 1
