@@ -2,10 +2,7 @@ name = "enertrack-web"
 compatibility_date = "2025-04-01"
 compatibility_flags = ["nodejs_compat"]
 
-# OpenNext gera o worker aqui
 main = ".open-next/worker.js"
-
-# Assets estáticos do Next.js
 assets = { directory = ".open-next/assets", binding = "ASSETS" }
 
 # ── D1 Database ────────────────────────────────────────────────────────────────
@@ -14,14 +11,11 @@ binding       = "DB"
 database_name = "enertrack-db"
 database_id   = "f597dd59-b602-4188-acf2-37b822eb5048"
 
-# ── KV Namespace (sessões JWT) ─────────────────────────────────────────────────
+# ── KV Namespace ──────────────────────────────────────────────────────────────
 [[kv_namespaces]]
 binding    = "SESSIONS"
 id         = "fdc84081c06842a18f8bd4995de3a598"
 preview_id = "fdc84081c06842a18f8bd4995de3a598"
-# preview_id: substitua pelo ID real se tiver um namespace separado para preview
-# wrangler kv namespace create SESSIONS --preview
 
 # ── Secrets ───────────────────────────────────────────────────────────────────
-# NUNCA coloque o valor aqui. Configure via:
-#   wrangler secret put JWT_SECRET
+# wrangler secret put JWT_SECRET
