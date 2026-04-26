@@ -36,10 +36,12 @@ function LoginForm() {
 
   return (
     <div className="card animate-in">
-      <h1 style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>Bem-vindo de volta</h1>
-      <p style={{ color: 'var(--muted)', fontSize: 13, marginBottom: 24 }}>
-        Entre na sua conta para continuar
-      </p>
+      <div style={{ textAlign: 'center', marginBottom: 24 }}>
+        <h1 style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>Bem-vindo de volta</h1>
+        <p style={{ color: 'var(--muted)', fontSize: 13, marginBottom: 0 }}>
+          Entre na sua conta para continuar
+        </p>
+      </div>
 
       {error && <p className="error-msg" style={{ marginBottom: 16 }}>{error}</p>}
 
